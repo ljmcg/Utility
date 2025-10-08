@@ -16,6 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Version
+      id: version
+      uses: paulhatch/semantic-version@v5.4.0
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -23,10 +28,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore -p:Version=${{ steps.version.outputs.version }}
     - name: Test
       run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:

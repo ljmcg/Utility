@@ -5,5 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>ljmcg.github.io.Utility</PackageId>
+	<Authors>Lorcan McGuinness, ljmcg</Authors>
+  </PropertyGroup>
 
 </Project>
