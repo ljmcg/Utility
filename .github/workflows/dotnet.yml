@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
     - uses: actions/checkout@v4
@@ -28,9 +30,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -p:Version=${{ steps.version.outputs.version }}
+      run: dotnet build -c Release --no-restore -p:Version=${{ steps.version.outputs.version }}
     - name: Test
-      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+      run: dotnet test -c Release --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
@@ -43,3 +45,11 @@ jobs:
         indicators: true
         output: both
         thresholds: '80 90'
+    - name: Package
+      run: dotnet pack --no-build -o out
+
+    - name: Nuget Source
+      run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name  github "https://nuget.pkg.github.com/ljmcg/index.json"
+
+    - name: Nuget Push
+      run: dotnet nuget push "/home/runner/work/Utility/Utility/out/ljmcg.github.io.Utility.1.0.0.nupkg" -s github

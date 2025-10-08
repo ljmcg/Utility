@@ -8,6 +8,7 @@
   <PropertyGroup>
     <PackageId>ljmcg.github.io.Utility</PackageId>
 	<Authors>Lorcan McGuinness, ljmcg</Authors>
+	<RepositoryUrl>https://github.com/ljmcg/Utility</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
