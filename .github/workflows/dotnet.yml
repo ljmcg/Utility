@@ -45,11 +45,11 @@ jobs:
         indicators: true
         output: both
         thresholds: '80 90'
-    - name: Package
-      run: dotnet pack --no-build -o out
+    # - name: Package
+    #   run: dotnet pack --no-build -o out
 
-    - name: Nuget Source
-      run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name  github "https://nuget.pkg.github.com/ljmcg/index.json"
+    # - name: Nuget Source
+    #   run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name  github "https://nuget.pkg.github.com/ljmcg/index.json"
 
-    - name: Nuget Push
-      run: dotnet nuget push "/home/runner/work/Utility/Utility/out/ljmcg.github.io.Utility.1.0.0.nupkg" -s github
+    # - name: Nuget Push
+    #   run: dotnet nuget push "/home/runner/work/Utility/Utility/out/ljmcg.github.io.Utility.1.0.0.nupkg" -s github
