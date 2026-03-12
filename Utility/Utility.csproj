@@ -9,7 +9,7 @@
     <PackageId>ljmcg.github.io.Utility</PackageId>
 	<Authors>Lorcan McGuinness, ljmcg</Authors>
 	<RepositoryUrl>https://github.com/ljmcg/Utility</RepositoryUrl>
-	<VersionPrefix>0.1.0</VersionPrefix>
+	<VersionPrefix>0.1.1</VersionPrefix>
 	<IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
